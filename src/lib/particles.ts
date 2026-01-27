@@ -14,15 +14,15 @@ export interface ParticleConfig {
 }
 
 const defaultConfig: Required<ParticleConfig> = {
-  count: 150,
-  minRadius: 2,
-  maxRadius: 5,
-  minSpeed: 0.2,
-  maxSpeed: 0.8,
-  colors: ['#30B4FF', '#7C8FFE', '#ffffff', '#60a5fa', '#a5b4fc', '#38bdf8'],
-  connectionDistance: 200,
-  connectionOpacity: 0.25,
-  glowIntensity: 15,
+  count: 80,
+  minRadius: 1.5,
+  maxRadius: 3,
+  minSpeed: 0.1,
+  maxSpeed: 0.4,
+  colors: ['#0ea5e9', '#06b6d4', '#ffffff', '#38bdf8', '#22d3ee', '#14b8a6'],
+  connectionDistance: 150,
+  connectionOpacity: 0.12,
+  glowIntensity: 8,
 };
 
 export class Particle {
@@ -50,12 +50,12 @@ export class Particle {
     this.radius = this.baseRadius;
     this.speedX = (Math.random() - 0.5) * config.maxSpeed * 2;
     this.speedY = (Math.random() - 0.5) * config.maxSpeed * 2;
-    this.baseOpacity = Math.random() * 0.6 + 0.4; // Higher base opacity
+    this.baseOpacity = Math.random() * 0.3 + 0.2; // Lower base opacity
     this.opacity = this.baseOpacity;
     this.color = config.colors[Math.floor(Math.random() * config.colors.length)];
-    this.pulseSpeed = Math.random() * 0.03 + 0.01;
+    this.pulseSpeed = Math.random() * 0.02 + 0.008;
     this.pulseOffset = Math.random() * Math.PI * 2;
-    this.glowSize = config.glowIntensity + Math.random() * 10;
+    this.glowSize = config.glowIntensity + Math.random() * 5;
   }
 
   update(canvasWidth: number, canvasHeight: number, time: number): void {
@@ -69,10 +69,10 @@ export class Particle {
     if (this.y < -50) this.y = canvasHeight + 50;
     if (this.y > canvasHeight + 50) this.y = -50;
 
-    // Pulse effect (twinkling)
+    // Pulse effect (twinkling) - reduced intensity
     const pulse = Math.sin(time * this.pulseSpeed + this.pulseOffset);
-    this.opacity = this.baseOpacity + pulse * 0.3;
-    this.radius = this.baseRadius + pulse * 1;
+    this.opacity = this.baseOpacity + pulse * 0.15;
+    this.radius = this.baseRadius + pulse * 0.5;
   }
 
   draw(ctx: CanvasRenderingContext2D): void {
@@ -169,14 +169,14 @@ export class ParticleSystem {
             (1 - distance / this.config.connectionDistance) *
             this.config.connectionOpacity;
           
-          // Create gradient line for connection
+          // Create gradient line for connection - softer colors
           const gradient = this.ctx.createLinearGradient(
             this.particles[i].x, this.particles[i].y,
             this.particles[j].x, this.particles[j].y
           );
-          gradient.addColorStop(0, `rgba(124, 143, 254, ${opacity})`);
-          gradient.addColorStop(0.5, `rgba(48, 180, 255, ${opacity * 0.8})`);
-          gradient.addColorStop(1, `rgba(124, 143, 254, ${opacity})`);
+          gradient.addColorStop(0, `rgba(14, 165, 233, ${opacity})`);
+          gradient.addColorStop(0.5, `rgba(6, 182, 212, ${opacity * 0.7})`);
+          gradient.addColorStop(1, `rgba(14, 165, 233, ${opacity})`);
           
           this.ctx.beginPath();
           this.ctx.strokeStyle = gradient;

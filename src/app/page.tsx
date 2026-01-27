@@ -100,32 +100,11 @@ export default function Home() {
       <section className="relative px-4 py-24 lg:px-8 lg:py-32">
         <div className="mx-auto max-w-7xl">
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
             className="text-center"
           >
-            {/* Badge */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 0.2 }}
-              className="mb-6 inline-flex"
-            >
-              <Badge variant="primary" size="md" className="whitespace-nowrap">
-                <span className="mr-1 inline-block">🇸🇬</span>
-                <span className="inline-block">{t.home.badge}</span>
-              </Badge>
-            </motion.div>
-            <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 0.25 }}
-              className="mb-4"
-            >
-              <p className="text-sm text-[var(--color-text-muted)]">{t.home.badgeSubtitle}</p>
-            </motion.div>
-
             {/* Main Heading */}
             <h1 className="mb-6 text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl">
               <span className="text-white">{t.home.title}</span>
@@ -139,9 +118,9 @@ export default function Home() {
 
             {/* CTA Buttons */}
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.4 }}
+              transition={{ delay: 0.3, duration: 0.5, ease: "easeOut" }}
               className="flex flex-col items-center justify-center gap-4 sm:flex-row"
             >
               <Link href="/products">
@@ -163,9 +142,9 @@ export default function Home() {
 
           {/* Stats */}
           <motion.div
-            initial={{ opacity: 0, y: 40 }}
+            initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.6, duration: 0.8 }}
+            transition={{ delay: 0.4, duration: 0.6, ease: "easeOut" }}
             className="mx-auto mt-20 grid max-w-4xl grid-cols-2 gap-8 lg:grid-cols-4"
           >
             {stats.map((stat, index) => (
@@ -186,9 +165,10 @@ export default function Home() {
       <section className="relative px-4 py-24 lg:px-8">
         <div className="mx-auto max-w-7xl">
           <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
+            transition={{ duration: 0.5, ease: "easeOut" }}
             className="mb-16 text-center"
           >
             <Badge variant="secondary" size="md" className="mb-4">
@@ -233,9 +213,10 @@ export default function Home() {
       <section className="relative px-4 py-24 lg:px-8">
         <div className="mx-auto max-w-7xl">
           <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
+            transition={{ duration: 0.5, ease: "easeOut" }}
             className="mb-16 text-center"
           >
             <h2 className="mb-4 text-3xl font-bold text-white lg:text-4xl break-words">
@@ -268,9 +249,10 @@ export default function Home() {
         <div className="mx-auto max-w-7xl">
           <div className="grid gap-12 lg:grid-cols-2 lg:gap-16">
             <motion.div
-              initial={{ opacity: 0, x: -30 }}
+              initial={{ opacity: 0, x: -15 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
+              transition={{ duration: 0.5, ease: "easeOut" }}
             >
               <Badge variant="secondary" size="md" className="mb-4">
                 {t.home.about.badge}
@@ -311,9 +293,10 @@ export default function Home() {
             </motion.div>
 
             <motion.div
-              initial={{ opacity: 0, x: 30 }}
+              initial={{ opacity: 0, x: 15 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
+              transition={{ duration: 0.5, ease: "easeOut" }}
               className="grid grid-cols-2 gap-6"
             >
               {aboutStats.map((stat, index) => (

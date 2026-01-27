@@ -33,7 +33,7 @@ const Card = forwardRef<HTMLDivElement, CardProps>(
     };
 
     const hoverStyles = hover
-      ? 'hover:border-[var(--color-border-hover)] hover:bg-[var(--color-bg-card-hover)] hover:-translate-y-1'
+      ? 'hover:border-[var(--color-border-hover)] hover:bg-[var(--color-bg-card-hover)] hover:-translate-y-0.5'
       : '';
 
     const glowStyles = glow ? 'shadow-[0_0_30px_rgba(48,180,255,0.15)]' : '';
@@ -41,10 +41,10 @@ const Card = forwardRef<HTMLDivElement, CardProps>(
     return (
       <motion.div
         ref={ref}
-        initial={{ opacity: 0, y: 20 }}
+        initial={{ opacity: 0, y: 10 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        transition={{ duration: 0.5 }}
+        transition={{ duration: 0.4, ease: "easeOut" }}
         className={`
           ${baseStyles}
           ${variantStyles[variant]}
