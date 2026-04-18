@@ -145,7 +145,7 @@ export interface Translations {
 export const translations: Record<Language, Translations> = {
   zh: {
     nav: {
-      home: '首页',
+     home: '首页',
       products: '解决方案',
       about: '关于我们',
       blog: '新闻动态',
@@ -163,6 +163,8 @@ export const translations: Record<Language, Translations> = {
       stats: {
         conversion: '50+',
         conversionLabel: '专业技术团队',
+        cycle: '2年',
+        cycleLabel: '行业经验',
         savings: '500+',
         savingsLabel: '成功案例',
         languages: '24/7',
